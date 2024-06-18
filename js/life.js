@@ -1,4 +1,4 @@
-game.PlayerLife = me.Life.extend({
+game.PlayerLife({
     init: function(x, y) {
         var settings = {};
         settings.image = 'プレイヤー';
