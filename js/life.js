@@ -1,6 +1,4 @@
-game.PlayerLife({
-    init: function(x, y) {
-        var settings = {};
+function Block(fallingLane, color, iter, distFromHex, settled) {
         settings.image = 'プレイヤー';
         settings.width = 230;
         settings.height = 200;
