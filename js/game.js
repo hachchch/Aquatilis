@@ -9,4 +9,13 @@ var objects = {
         /*音声*/
         {name: "theme", type: "audio", src: "data/bgm/"}
     ],
+  entityTypes: [
+      "Benthos",
+      "Predator",
+      "Nekton",
+      "Cnidaria",
+      "Porifera",
+      "Algae",
+      "Zooplankton"
+  ],
 };
