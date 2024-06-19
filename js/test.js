@@ -1,6 +1,2 @@
-var health = 100;
-var velocity = 100;
-function distance() {}
-function score() {
-        return distance*3
-}
+var distance = 10;
+var score = distance*10;
