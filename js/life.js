@@ -20,4 +20,12 @@ class Nekton extends entityTypes{
     this.name = "Nekton";
     this.value = 3;
   }
+}
+class PlayerFish extends entityTypes{
+  constructor() {
+    this.name = "Fish";
+    this.health = 3;
+    this.speed = 0;
+    this.value = 0;
+  }
 };
