@@ -1,14 +1,61 @@
 <!DOCTYPE HTML>
-<html lang="jp">
+<html>
     <head>
-            <meta http-equiv="Content-Type" content="Aquatilus; charset=UTF-8" />
-        <title>Aquatilus</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Aquatilis</title>
     </head>
+    <style>
+        body{
+            background-color:#9ca5b9;
+            }
+    </style>
     <body>
-        <div id="screen"></div>
-        <script type="text/javascript" src="js/game.js"></script>
-        <script type="text/javascript" src="js/test.js"></script>
-        <script type="text/javascript" src="js/render.js"></script>
-        <canvas id="canvas" width="100" height="100"></canvas>
+        <audio id="DamageSound" preload="auto">
+            <source src="./Audio/キャンセル5.mp3" type="audio/mp3">
+            効果音非対応
+        </audio>
+        <audio id="EatSound" preload="auto">
+            <source src="./Audio/決定ボタンを押す12.mp3" type="audio/mp3">
+            効果音非対応
+        </audio>
+        <audio id="TwilightZone" preload="auto">
+            <source src="./Audio/TwilightZone.mp3" type="audio/mp3">
+            音楽非対応
+        </audio>
+        <audio id="MidnightZone" preload="auto">
+            <source src="./Audio/MidnightZone.mp3" type="audio/mp3">
+            音楽非対応
+        </audio>
+        <audio id="Aquatilis" preload="auto">
+            <source src="./Audio/Aquatilis.mp3" type="audio/mp3">
+            音楽非対応
+        </audio>
+        <audio id="HydrothermalVent" preload="auto">
+            <source src="./Audio/熱水噴出孔.mp3" type="audio/mp3">
+            音楽非対応
+        </audio>
+        <audio id="Spirogyra" preload="auto">
+            <source src="./Audio/アオミドロ.mp3" type="audio/mp3">
+            音楽非対応
+        </audio>
+        <canvas class="canvas" width="1300" height="600"></canvas><br>
+        <select id="difficulties">
+      <optgroup label="難易度">
+        <option>簡単</option>
+        <option>普通</option>
+        <option>難しい</option>
+      </optgroup>
+    </select>
+        <input id="startButton" type="button" value="スタート" onclick="gameStart();" />
+        <progress id='progressBar' max='100' value='0'>0%</progress>ステージ:<t id="stageCounter"></t><br>
+        <input id="titleButton" type="button" value="タイトルBGM" onclick="bgm3Trigger();" />
+        名前の非表示<input id="toggle" type='checkbox' onclick="nameDisplay.value++;" /><br>
+        スコア:<t id="scoreCounter"></t><br>
+        プレイ時間:<t id="timer"></t><br>
+        ミス回数:<t id="missCounter">--</t><br>
+        <t id="text">簡単はいくらミスしても大丈夫ですが、ステージに上限があります。<br>
+        普通及び難しいの場合、一つのステージ内で10回ミスすると終了します。<br>
+        操作はPCの場合WASDです。スマホではタッチ操作ができます。</t>
+        <script type="text/javascript" src="./js/main.js"></script>
     </body>
 </html>
