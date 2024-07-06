@@ -10,7 +10,7 @@
             let isPC=false;
             let isStart=false;
             const img = new Image(); // 新たな img 要素を作成
-            img.src = "./../Images/player.png";
+            img.src = "data:image/ong;base64,https://github.com/hachchch/Aquatilis/blob/main/Images/player.png";
             const players=[];
             const fishes=[];
             const mouse = {
