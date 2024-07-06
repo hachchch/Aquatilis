@@ -10,7 +10,7 @@
             let isPC=false;
             let isStart=false;
             const img = new Image(); // 新たな img 要素を作成
-            img.src = "../../Downloads/プレイヤー1.png";
+            img.src = "../Images/プレイヤー1.png";
             const players=[];
             const fishes=[];
             const mouse = {
