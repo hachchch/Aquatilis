@@ -672,9 +672,14 @@ const canvas = document.querySelector('.canvas');
                 ctx.fillRect(0,0,canvas.width,canvas.height);
                 if(time.value>0){
                 ctx.beginPath();
+                if(isPC===true){
+                //スマホだと何故かこの処理がラグの原因になる。
                 ctx.fillStyle="#0000ff0"+players[0].eatEffect;
                 if(parseInt(players[0].eatEffect)>0){
                     players[0].eatEffect--;
+                }
+                }else{
+                ctx.fillStyle="#00000000";
                 }
                 ctx.arc(players[0].x,players[0].y,radius,0,2*Math.PI);
                 ctx.fill();
