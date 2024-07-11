@@ -1,4 +1,4 @@
-            const canvas = document.querySelector('.canvas');
+const canvas = document.querySelector('.canvas');
             const ctx = canvas.getContext('2d');
             const miss = document.getElementById('missCounter');
             const score = document.getElementById('stageCounter');
@@ -9,10 +9,12 @@
             let startTime=0;
             let isPC=false;
             let isStart=false;
+            let popInterval=0;
             const img = new Image(); // 新たな img 要素を作成
             img.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player.png?raw=true";
             const players=[];
             const fishes=[];
+            const popTexts=[];
             const mouse = {
                 x: null,
                 y: null,
@@ -27,6 +29,16 @@
                 document.getElementById('EatSound').pause();
                 document.getElementById('EatSound').currentTime = 0;
                 document.getElementById("EatSound").play();
+            }
+            function nextStageTrigger() {
+                document.getElementById('NextStageSound').pause();
+                document.getElementById('NextStageSound').currentTime = 0;
+                document.getElementById("NextStageSound").play();
+            }
+            function nextFloorTrigger() {
+                document.getElementById('NextFloorSound').pause();
+                document.getElementById('NextFloorSound').currentTime = 0;
+                document.getElementById("NextFloorSound").play();
             }
             function bgm1Trigger() {
                 bgm2Stop();
@@ -623,6 +635,7 @@
             }
             }
             }
+            popTexts.loopOf1=0;
             ctx.fillStyle="#ffffff"; //もっと暗いd2eefe
             ctx.fillRect(0,0,canvas.width,canvas.height);
             ctx.fillStyle="black";
@@ -682,17 +695,40 @@
                 radius = radius-players[0].r/5;
                 score2.value++;
                 score2.innerHTML=score2.value;
+                if(popTexts.loopOf1==0){
+                popTexts.push({
+                        value:"loop",
+                        x:players[0].x,
+                        y:players[0].y,
+                        interval:100,
+                        interval2:100
+                    });
+                }
+                popTexts.loopOf1++;
                 progress.value=radius/2;
                 if(radius<players[0].r){
+                popTexts.loopOf1=0;
                 //次のステージへ
                     radius2=radius;
                     players[0].health=10;
                     if(difficulties.value==='簡単' && score.value==9){}else{
+                    if(score.value==10 || score.value==19){
+                    nextFloorTrigger();
+                    }else{
+                    nextStageTrigger();
+                    }
                     score.value++;
                     score.innerHTML=score.value;
                     }
                 score2.value=score2.value+50;
                 score2.innerHTML=score2.value;
+                popTexts.push({
+                        value:50,
+                        x:players[0].x,
+                        y:players[0].y,
+                        interval:25,
+                        interval2:25
+                    });
                 }
                 }else{
                 radius = radius+players[0].r/100;
@@ -788,6 +824,13 @@
                     if(radius2<200){
                     radius=radius+10;
                     players[0].eatEffect=players[0].eatEffect+(9-players[0].eatEffect);
+                    popTexts.push({
+                        value:10+score.value,
+                        x:players[0].x,
+                        y:players[0].y,
+                        interval:25,
+                        interval2:25
+                    });
                     score2.value=score2.value+10+score.value;
                     score2.innerHTML=score2.value;
                     }
@@ -866,6 +909,25 @@
                 }
                 if(p.x>canvas.width || p.x<0){
                     p.x=p.x-p.v*p.dx
+                }
+                }
+                }
+                for(const t of popTexts){
+                if(t.interval>0){
+                ctx.font = "15px serif";
+                ctx.fillStyle="gray";
+                if(t.value==="loop" && popTexts.loopOf1!=0){
+                ctx.fillText("+"+popTexts.loopOf1,t.x,t.y-(t.interval2-t.interval))
+                }else{
+                ctx.fillText("+"+t.value,t.x,t.y-(t.interval2-t.interval));
+                }
+                t.interval--;
+                }else{
+                popTexts.num = popTexts.findIndex((element)=>element.x==t.x && element.y==t.y);
+                    if(popTexts.num>-1){
+                    popTexts.push("dammy");
+                    popTexts.length=popTexts.copyWithin(popTexts.num,popTexts.length-1).length-1;
+                    popTexts.length=popTexts.copyWithin(popTexts.num,popTexts.num+1).length-1;
                 }
                 }
                 }
@@ -978,6 +1040,11 @@
                     break;
                     case 'd':
                     players[0].dx=0;
+                    break;
+                    
+                    case 'p':
+                    score.value++;
+                    
                     break;
                     default:
                         break;
