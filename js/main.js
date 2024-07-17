@@ -683,8 +683,6 @@ const canvas = document.querySelector('.canvas');
                 bgm2Trigger();
                 }else if(score.value>=20){
                 bgm4Trigger();
-                }else if(score.value==50){
-                bgmFinalTrigger();
                 }
                 }
                 ctx.clearRect(0,0,canvas.width,canvas.height);
@@ -746,6 +744,8 @@ const canvas = document.querySelector('.canvas');
                     if(difficulties.value==='簡単' && score.value==9){}else{
                     if(score.value==10 || score.value==19){
                     nextFloorTrigger();
+                    }else if(score.value==49){
+                    bgmFinalTrigger();
                     }else{
                     nextStageTrigger();
                     }
