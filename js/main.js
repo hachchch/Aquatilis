@@ -681,7 +681,7 @@ const canvas = document.querySelector('.canvas');
                 bgm5Trigger();
                 }else if(score.value==10){
                 bgm2Trigger();
-                }else if(score.value>=20){
+                }else if(score.value>=20 && score.value!=50){
                 bgm4Trigger();
                 }
                 }
