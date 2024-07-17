@@ -95,6 +95,17 @@ const canvas = document.querySelector('.canvas');
                 document.getElementById('Spirogyra').currentTime = 0;
                 document.getElementById('Spirogyra').pause();
             }
+            function bgmFinalTrigger() {
+                bgm1Stop();
+                bgm2Stop();
+                bgm4Stop();
+                bgm5Stop();
+                document.getElementById("EarthCore").play();
+            }
+            function bgmFinalStop(){
+                document.getElementById('EarthCore').currentTime = 0;
+                document.getElementById('EarthCore').pause();
+            }
             difficulties.value='普通';
             miss.value=0;
             score.value=0;
@@ -672,6 +683,8 @@ const canvas = document.querySelector('.canvas');
                 bgm2Trigger();
                 }else if(score.value>=20){
                 bgm4Trigger();
+                }else if(score.value==50){
+                bgmFinalTrigger();
                 }
                 }
                 ctx.clearRect(0,0,canvas.width,canvas.height);
