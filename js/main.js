@@ -1073,11 +1073,6 @@ const canvas = document.querySelector('.canvas');
                     case 'd':
                     players[0].dx=0;
                     break;
-                    
-                    case 'p':
-                    score.value++;
-                    
-                    break;
                     default:
                         break;
                 }
