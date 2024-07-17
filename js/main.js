@@ -1081,7 +1081,7 @@ const canvas = document.querySelector('.canvas');
             let nIntervId;
               function repeatTimer(){
                       if(!nIntervId){
-                      nIntervId = setInterval(timeEvent, 350);
+                      nIntervId = setInterval(timeEvent, 100);
                   }
             }
             function timeEvent(){
@@ -1091,3 +1091,4 @@ players[0].animationNumber=players[0].animationNumber+1;
             players[0].animationNumber=1;
             }
 }
+repeatTimer();
