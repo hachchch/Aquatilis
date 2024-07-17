@@ -681,7 +681,7 @@ const canvas = document.querySelector('.canvas');
                 bgm5Trigger();
                 }else if(score.value==10){
                 bgm2Trigger();
-                }else if(score.value>=20 && score.value!=50){
+                }else if(score.value>=20){
                 bgm4Trigger();
                 }
                 }
@@ -744,8 +744,6 @@ const canvas = document.querySelector('.canvas');
                     if(difficulties.value==='簡単' && score.value==9){}else{
                     if(score.value==10 || score.value==19){
                     nextFloorTrigger();
-                    }else if(score.value==49){
-                    bgmFinalTrigger();
                     }else{
                     nextStageTrigger();
                     }
@@ -1004,6 +1002,10 @@ const canvas = document.querySelector('.canvas');
             ctx.fillText("時間"+time.value+"秒", 450, 450);
             ctx.fillText("スコア"+score2.value+"点", 650, 450);
             ctx.fillText("ステージ"+score.value, 850, 450);
+            if(score.value<=30){
+            ctx.fillText("おめでとう！あなたはステージ30を超えたプレイヤーです！", 650, 200);
+            bgmFinalTrigger();
+            }
             }
             }
             function gameStart(){
