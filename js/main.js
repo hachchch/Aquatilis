@@ -10,11 +10,14 @@ const canvas = document.querySelector('.canvas');
             let isPC=false;
             let isStart=false;
             let popInterval=0;
-            const img = new Image(); // 新たな img 要素を作成
-            img.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player1.png?raw=true";
-            img.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player2.png?raw=true";
-            img.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player3.png?raw=true";
-            img.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player2-blink.png?raw=true";
+            const img1 = new Image(); // 新たな img 要素を作成
+            img1.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player1.png?raw=true";
+            const img2 = new Image();
+            img2.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player2.png?raw=true";
+            const img3 = new Image();
+            img3.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player3.png?raw=true";
+            const img2Blink = new Image();
+            img2Blink.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player2-blink.png?raw=true";
             const players=[];
             const fishes=[];
             const popTexts=[];
@@ -110,6 +113,7 @@ const canvas = document.querySelector('.canvas');
                 dx:0,
                 dy:0,
                 v:5,
+                animationNumber:1,
                 eatEffect: "0"
             });
             function summonFishes(){
@@ -692,7 +696,19 @@ const canvas = document.querySelector('.canvas');
                 ctx.arc(players[0].x,players[0].y,players[0].feed,0,2*Math.PI);
                 ctx.fill();
                 }
-                ctx.drawImage(img, players[0].x-25, players[0].y-25, 50, 50);
+                if(player[0].animationNumber==1){
+                ctx.drawImage(img1, players[0].x-25, players[0].y-25, 50, 50);
+                }else if(player[0].animationNumber==2){
+                ctx.drawImage(img2, players[0].x-25, players[0].y-25, 50, 50);
+                }else if(player[0].animationNumber==3){
+                ctx.drawImage(img3, players[0].x-25, players[0].y-25, 50, 50);
+                }else if(player[0].animationNumber==4){
+                ctx.drawImage(img1, players[0].x-25, players[0].y-25, 50, 50);
+                }else if(player[0].animationNumber==5){
+                ctx.drawImage(img2Blink, players[0].x-25, players[0].y-25, 50, 50);
+                }else if(player[0].animationNumber==6){
+                ctx.drawImage(img3, players[0].x-25, players[0].y-25, 50, 50);
+                }
                 if(parseInt(radius2)>200){
                 //小さくなる
                 radius = radius-players[0].r/5;
@@ -1054,3 +1070,16 @@ const canvas = document.querySelector('.canvas');
                 }
                 event.preventDefault();
             });
+            let nIntervId;
+              function repeatTimer(){
+                      if(!nIntervId){
+                      nIntervId = setInterval(timeEvent, 350);
+                  }
+            }
+            function timeEvent(){
+                        if(player[0].animationNumber!=6){
+player[0].animationNumber=player[0].animationNumber+1;
+            }else{
+            player[0].animationNumber=1;
+            }
+}
