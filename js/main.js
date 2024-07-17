@@ -709,17 +709,17 @@ const canvas = document.querySelector('.canvas');
                 ctx.arc(players[0].x,players[0].y,players[0].feed,0,2*Math.PI);
                 ctx.fill();
                 }
-                if(player[0].animationNumber==1){
+                if(players[0].animationNumber==1){
                 ctx.drawImage(img1, players[0].x-25, players[0].y-25, 50, 50);
-                }else if(player[0].animationNumber==2){
+                }else if(players[0].animationNumber==2){
                 ctx.drawImage(img2, players[0].x-25, players[0].y-25, 50, 50);
-                }else if(player[0].animationNumber==3){
+                }else if(players[0].animationNumber==3){
                 ctx.drawImage(img3, players[0].x-25, players[0].y-25, 50, 50);
-                }else if(player[0].animationNumber==4){
+                }else if(players[0].animationNumber==4){
                 ctx.drawImage(img1, players[0].x-25, players[0].y-25, 50, 50);
-                }else if(player[0].animationNumber==5){
+                }else if(players[0].animationNumber==5){
                 ctx.drawImage(img2Blink, players[0].x-25, players[0].y-25, 50, 50);
-                }else if(player[0].animationNumber==6){
+                }else if(players[0].animationNumber==6){
                 ctx.drawImage(img3, players[0].x-25, players[0].y-25, 50, 50);
                 }
                 if(parseInt(radius2)>200){
@@ -1090,9 +1090,9 @@ const canvas = document.querySelector('.canvas');
                   }
             }
             function timeEvent(){
-                        if(player[0].animationNumber!=6){
-player[0].animationNumber=player[0].animationNumber+1;
+                        if(players[0].animationNumber!=6){
+players[0].animationNumber=players[0].animationNumber+1;
             }else{
-            player[0].animationNumber=1;
+            players[0].animationNumber=1;
             }
 }
