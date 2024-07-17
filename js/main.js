@@ -11,7 +11,10 @@ const canvas = document.querySelector('.canvas');
             let isStart=false;
             let popInterval=0;
             const img = new Image(); // 新たな img 要素を作成
-            img.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player.png?raw=true";
+            img.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player1.png?raw=true";
+            img.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player2.png?raw=true";
+            img.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player3.png?raw=true";
+            img.src = "https://github.com/hachchch/Aquatilis/blob/main/Images/player2-blink.png?raw=true";
             const players=[];
             const fishes=[];
             const popTexts=[];
